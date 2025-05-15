@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+
+            document.addEventListener('DOMContentLoaded', function() {
+                function resetButtons() {
+                    document.querySelectorAll('button').forEach(button => {
+                        button.style.borderColor = 'transparent';
+                    });
+                    document.getElementById('ansA').style.display = 'none';
+                    document.getElementById('ansB').style.display = 'none';
+                    document.getElementById('ansC').style.display = 'none';
+                    event.preventDefault();
+                };
+
+                document.querySelector('#optA').addEventListener('click', function() {
+                    resetButtons();
+                    this.style.borderColor = 'red';
+                    document.getElementById('ansA').style.display = 'inline';
+                });
+
+
+                document.querySelector('#optB').addEventListener('click', function() {
+                    resetButtons();
+                    this.style.borderColor = 'green';
+                    document.getElementById('ansB').style.display = 'inline';
+                });
+
+                document.querySelector('#optC').addEventListener('click', function() {
+                    resetButtons();
+                    this.style.borderColor = 'red';
+                    document.getElementById('ansC').style.display = 'inline';
+                });
+
+                document.querySelector('#submit').addEventListener('click', function(event) {
+                    event.preventDefault();
+                    let input = document.querySelector('#name');
+                    if (input.value == 'mars') {
+                        this.style.borderColor = 'green';
+                        document.getElementById('ans1').style.display = 'inline';
+                        document.getElementById('ans2').style.display = 'none';
+                    }
+                    else {
+                        this.style.borderColor = 'red';
+                        document.getElementById('ans2').style.display = 'inline';
+                        document.getElementById('ans1').style.display = 'none';
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+
+                <h3>
+                    1. Which planet is known as the Red Planet?
+                </h3>
+                <form>
+                    <button id='optA'>Earth</button>
+                    <button id='optB'>Mars</button>
+                    <button id='optC'>Venus</button>
+                </form>
+                <span id='ansA' style='color: red; margin-right: 30px; display: none;'>Incorrect</span>
+                <span id='ansB' style='color: Green; margin-right: 30px; display: none; padding: 95px;'>correct</span>
+                <span id='ansC' style='color: red; margin-right: 30px; display: none; padding: 190px'>Incorrect</span>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+
+                <h3>
+                    1. Which planet is known as the Red Planet?
+                </h3>
+                <form>
+                    <input autocomplete="off" autofocus id="name" placeholder="Answer in lowewr case" type="text">
+                    <input type="submit" id='submit'>
+                </form>
+                <span id='ans1' style='color: green; margin-right: 30px; display: none;'>correct</span>
+                <span id='ans2' style='color: red; margin-right: 30px; display: none;'>Incorrect</span>
+            </div>
+        </div>
+    </body>
+</html>
